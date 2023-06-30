@@ -1,0 +1,44 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Comptes index{% endblock %}
+
+{% block body %}
+
+
+
+    <h1>Comptes index</h1>
+
+    <table class="table table-dark table-striped-columns">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Numero_compte</th>
+                <th>Solde</th>
+                <th>Date_ouvert</th>
+                <th>Type_compte</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for compte in comptes %}
+            <tr>
+                <td>{{ compte.id }}</td>
+                <td>{{ compte.NumeroCompte }}</td>
+                <td>{{ compte.Solde }}</td>
+                <td>{{ compte.DateOuvert ? compte.DateOuvert|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ compte.TypeCompte }}</td>
+                <td>
+                    <a href="{{ path('app_comptes_show', {'id': compte.id}) }}" class="btn btn-warning" >show</a>
+                    <a href="{{ path('app_comptes_edit', {'id': compte.id}) }}" class="btn btn-light">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_comptes_new') }}" class="btn btn-info">Create new</a>
+{% endblock %}

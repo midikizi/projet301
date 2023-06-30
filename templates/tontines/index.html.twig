@@ -1,0 +1,42 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Tontines index{% endblock %}
+
+{% block body %}
+
+
+
+    <h1>Tontines index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Date_debut</th>
+                <th>Date_cloture</th>
+                <th>Montant</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tontine in tontines %}
+            <tr>
+                <td>{{ tontine.id }}</td>
+                <td>{{ tontine.DateDebut ? tontine.DateDebut|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ tontine.DateCloture ? tontine.DateCloture|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ tontine.Montant }}</td>
+                <td>
+                    <a href="{{ path('app_tontines_show', {'id': tontine.id}) }}">show</a>
+                    <a href="{{ path('app_tontines_edit', {'id': tontine.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_tontines_new') }}">Create new</a>
+{% endblock %}

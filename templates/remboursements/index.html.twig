@@ -1,0 +1,38 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Remboursements index{% endblock %}
+
+{% block body %}
+
+
+
+    <h1>Remboursements index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Payement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for remboursement in remboursements %}
+            <tr>
+                <td>{{ remboursement.id }}</td>
+                <td>{{ remboursement.Payement }}</td>
+                <td>
+                    <a href="{{ path('app_remboursements_show', {'id': remboursement.id}) }}">show</a>
+                    <a href="{{ path('app_remboursements_edit', {'id': remboursement.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_remboursements_new') }}">Create new</a>
+{% endblock %}

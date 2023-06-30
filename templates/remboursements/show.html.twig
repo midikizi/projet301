@@ -1,0 +1,26 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Remboursements{% endblock %}
+
+{% block body %}
+    <h1>Remboursements</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ remboursement.id }}</td>
+            </tr>
+            <tr>
+                <th>Payement</th>
+                <td>{{ remboursement.Payement }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_remboursements_index') }}">back to list</a>
+
+    <a href="{{ path('app_remboursements_edit', {'id': remboursement.id}) }}">edit</a>
+
+    {{ include('remboursements/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Comptes{% endblock %}
+
+{% block body %}
+    <h1>Comptes</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ compte.id }}</td>
+            </tr>
+            <tr>
+                <th>Numero_compte</th>
+                <td>{{ compte.NumeroCompte }}</td>
+            </tr>
+            <tr>
+                <th>Solde</th>
+                <td>{{ compte.Solde }}</td>
+            </tr>
+            <tr>
+                <th>Date_ouvert</th>
+                <td>{{ compte.DateOuvert ? compte.DateOuvert|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Type_compte</th>
+                <td>{{ compte.TypeCompte }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_comptes_index') }}">back to list</a>
+
+    <a href="{{ path('app_comptes_edit', {'id': compte.id}) }}">edit</a>
+
+    {{ include('comptes/_delete_form.html.twig') }}
+{% endblock %}

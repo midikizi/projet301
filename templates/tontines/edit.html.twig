@@ -1,0 +1,13 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Edit Tontines{% endblock %}
+
+{% block body %}
+    <h1>Edit Tontines</h1>
+
+    {{ include('tontines/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_tontines_index') }}">back to list</a>
+
+    {{ include('tontines/_delete_form.html.twig') }}
+{% endblock %}

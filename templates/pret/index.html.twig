@@ -1,0 +1,40 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Pret index{% endblock %}
+
+{% block body %}
+
+
+
+    <h1>Pret index</h1>
+
+    <table class="table table-dark table-striped-columns">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Somme</th>
+                <th>Taux_interet</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pret in prets %}
+            <tr>
+                <td>{{ pret.id }}</td>
+                <td>{{ pret.Somme }}</td>
+                <td>{{ pret.TauxInteret }}</td>
+                <td>
+                    <a href="{{ path('app_pret_show', {'id': pret.id}) }}">show</a>
+                    <a href="{{ path('app_pret_edit', {'id': pret.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pret_new') }}">Create new</a>
+{% endblock %}

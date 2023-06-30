@@ -1,0 +1,11 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}New Remboursements{% endblock %}
+
+{% block body %}
+    <h1>Create new Remboursements</h1>
+
+    {{ include('remboursements/_form.html.twig') }}
+
+    <a href="{{ path('app_remboursements_index') }}">back to list</a>
+{% endblock %}
