@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pret{% endblock %}
+
+{% block body %}
+    <h1>Create new Pret</h1>
+
+    {{ include('pret/_form.html.twig') }}
+
+    <a href="{{ path('app_pret_index') }}">back to list</a>
+{% endblock %}

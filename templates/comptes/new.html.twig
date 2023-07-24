@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Comptes{% endblock %}
+
+{% block body %}
+    <h1>Create new Comptes</h1>
+
+    {{ include('comptes/_form.html.twig') }}
+
+    <a href="{{ path('app_comptes_index') }}">back to list</a>
+{% endblock %}

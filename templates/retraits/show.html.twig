@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Retraits{% endblock %}
+
+{% block body %}
+    <h1>Retraits</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ retrait.id }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ retrait.montant }}</td>
+            </tr>
+            <tr>
+                <th>Date_retrait</th>
+                <td>{{ retrait.dateRetrait ? retrait.dateRetrait|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_retraits_index') }}">back to list</a>
+
+    <a href="{{ path('app_retraits_edit', {'id': retrait.id}) }}">edit</a>
+
+    {{ include('retraits/_delete_form.html.twig') }}
+{% endblock %}

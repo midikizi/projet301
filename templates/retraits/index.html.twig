@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Retraits index{% endblock %}
+
+{% block body %}
+    <h1>Retraits index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Montant</th>
+                <th>Date_retrait</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for retrait in retraits %}
+            <tr>
+                <td>{{ retrait.id }}</td>
+                <td>{{ retrait.montant }}</td>
+                <td>{{ retrait.dateRetrait ? retrait.dateRetrait|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_retraits_show', {'id': retrait.id}) }}">show</a>
+                    <a href="{{ path('app_retraits_edit', {'id': retrait.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_retraits_new') }}">Create new</a>
+{% endblock %}

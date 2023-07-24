@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Depot{% endblock %}
+
+{% block body %}
+    <h1>Depot</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ depot.id }}</td>
+            </tr>
+            <tr>
+                <th>Montant</th>
+                <td>{{ depot.montant }}</td>
+            </tr>
+            <tr>
+                <th>Date_depot</th>
+                <td>{{ depot.dateDepot ? depot.dateDepot|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_depot_index') }}">back to list</a>
+
+    <a href="{{ path('app_depot_edit', {'id': depot.id}) }}">edit</a>
+
+    {{ include('depot/_delete_form.html.twig') }}
+{% endblock %}

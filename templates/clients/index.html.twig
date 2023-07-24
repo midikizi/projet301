@@ -1,0 +1,45 @@
+{% extends 'temp_index.html.twig' %}
+
+{% block title %}Clients index{% endblock %}
+
+{% block body %}
+    <h1>Clients index</h1>
+<div class="card-body">
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Prenom</th>
+                <th>Profession</th>
+                <th>Email</th>
+                <th>Telephone</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nom }}</td>
+                <td>{{ client.prenom }}</td>
+                <td>{{ client.profession }}</td>
+                <td>{{ client.Email }}</td>
+                <td>{{ client.telephone }}</td>
+                <td>
+                    <a href="{{ path('app_clients_show', {'id': client.id}) }}"class="btn btn-warning">show</a>
+                    <a href="{{ path('app_clients_edit', {'id': client.id}) }}"class="btn btn-dark">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+    <a href="{{ path('app_clients_new') }}"class="btn btn-info">Create new</a>
+{% endblock %}
